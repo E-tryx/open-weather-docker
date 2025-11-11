@@ -1,0 +1,339 @@
+{
+  "id": null,
+  "uid": "annual-rainfall",
+  "title": "Annual Rainfall Analysis by City",
+  "tags": ["weather", "rainfall", "annual", "kenya"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Nairobi - Monthly Rainfall 2024",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE city = 'nairobi' AND year = 2024\nGROUP BY month\nORDER BY month",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Eldoret - Monthly Rainfall 2024",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE city = 'eldoret' AND year = 2024\nGROUP BY month\nORDER BY month",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Annex Eldoret - Monthly Rainfall 2024",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE city = 'annex_eldoret' AND year = 2024\nGROUP BY month\nORDER BY month",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Biretwo - Monthly Rainfall 2024",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE city = 'biretwo' AND year = 2024\nGROUP BY month\nORDER BY month",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Naiberi - Monthly Rainfall 2024",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE city = 'naiberi' AND year = 2024\nGROUP BY month\nORDER BY month",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Rainfall Comparison - All Cities",
+      "type": "barchart",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  month,\n  city,\n  SUM(rainfall_1h) as \"Monthly Rainfall\"\nFROM weather_data\nWHERE year = 2024\nGROUP BY month, city\nORDER BY month, city",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "Month",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Annual Rainfall Summary",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  city as \"City\",\n  SUM(rainfall_1h) as \"Total Rainfall (mm)\",\n  AVG(rainfall_1h) as \"Avg Daily Rainfall (mm)\",\n  MAX(rainfall_1h) as \"Max Daily Rainfall (mm)\",\n  COUNT(CASE WHEN rainfall_1h > 0 THEN 1 END) as \"Rainy Days\",\n  ROUND(COUNT(CASE WHEN rainfall_1h > 0 THEN 1 END) * 100.0 / COUNT(*), 1) as \"Rainy Days %\"\nFROM weather_data\nWHERE year = 2024\nGROUP BY city\nORDER BY \"Total Rainfall (mm)\" DESC",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "center"
+          }
+        }
+      }
+    }
+  ],
+  "time": {
+    "from": "2024-01-01T00:00:00.000Z",
+    "to": "2024-12-31T23:59:59.999Z"
+  },
+  "refresh": "5m",
+  "version": 1
+}

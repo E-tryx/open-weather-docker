@@ -1,0 +1,110 @@
+{
+  "id": null,
+  "uid": "weather-overview",
+  "title": "Weather Overview",
+  "tags": ["weather", "temperature", "kenya"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Temperature by City",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  timestamp as \"time\",\n  city,\n  temperature\nFROM weather_data\nWHERE $__timeFilter(timestamp)\nORDER BY timestamp",
+          "format": "time_series",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius",
+          "color": {
+            "mode": "palette-classic"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Current Weather Conditions",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  city,\n  temperature as \"Temperature\",\n  humidity as \"Humidity\",\n  pressure as \"Pressure\",\n  weather_description as \"Condition\",\n  timestamp as \"Last Updated\"\nFROM weather_data\nWHERE timestamp IN (\n  SELECT MAX(timestamp)\n  FROM weather_data\n  GROUP BY city\n)\nORDER BY city",
+          "format": "table",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Humidity Levels",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  timestamp as \"time\",\n  city,\n  humidity\nFROM weather_data\nWHERE $__timeFilter(timestamp)\nORDER BY timestamp",
+          "format": "time_series",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {
+            "mode": "palette-classic"
+          }
+        }
+      }
+    }
+  ],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "refresh": "1m",
+  "version": 1,
+  "schemaVersion": 36
+}

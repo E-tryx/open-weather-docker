@@ -1,0 +1,19 @@
+apiVersion: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: pg-c63647-lagatkjosiah-692c.c.aivencloud.com:24862
+    database: defaultdb
+    user: avnadmin
+    secureJsonData:
+      password: "AVNS_G1ajzCj_WUpXrLzc-3t"
+    jsonData:
+      sslmode: "require"
+      maxOpenConns: 100
+      maxIdleConns: 100
+      maxIdleConnsAuto: true
+      connMaxLifetime: 14400
+    editable: true
+    uid: "postgresql"

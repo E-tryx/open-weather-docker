@@ -1,0 +1,76 @@
+{
+  "id": null,
+  "uid": "rainfall-analysis",
+  "title": "Rainfall Analysis",
+  "tags": ["weather", "rainfall", "kenya"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Rainfall by City",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  timestamp as \"time\",\n  city,\n  COALESCE(rainfall_1h, 0) as \"Rainfall\"\nFROM weather_data\nWHERE $__timeFilter(timestamp)\nORDER BY timestamp",
+          "format": "time_series",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "lengthmm",
+          "color": {
+            "mode": "palette-classic"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Monthly Rainfall Summary",
+      "type": "table",
+      "datasource": {
+        "type": "postgres",
+        "uid": "postgresql"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "postgresql"
+          },
+          "rawSql": "SELECT\n  city,\n  COUNT(*) as \"Readings\",\n  SUM(COALESCE(rainfall_1h, 0)) as \"Total Rainfall\",\n  AVG(COALESCE(rainfall_1h, 0)) as \"Avg Rainfall\",\n  MAX(COALESCE(rainfall_1h, 0)) as \"Max Rainfall\"\nFROM weather_data\nWHERE $__timeFilter(timestamp)\nGROUP BY city\nORDER BY \"Total Rainfall\" DESC",
+          "format": "table",
+          "refId": "A"
+        }
+      ]
+    }
+  ],
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "refresh": "5m",
+  "version": 1,
+  "schemaVersion": 36
+}
