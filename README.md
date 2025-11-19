@@ -83,10 +83,10 @@ GRAFANA_ADMIN_PASSWORD=changeme123
 
 ```bash
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Check services
-docker-compose ps
+docker compose ps
 ```
 
 ### 4. Install Python Dependencies
@@ -295,14 +295,14 @@ ALTER TABLE weather_data ADD COLUMN IF NOT EXISTS new_column DECIMAL(5,2);
 
 ```bash
 # Check all services
-docker-compose ps
+docker compose ps
 
 # View logs
-docker-compose logs kafka
-docker-compose logs grafana
+docker compose logs kafka
+docker compose logs grafana
 
 # Monitor Kafka topics
-docker-compose exec kafka kafka-topics --list --bootstrap-server localhost:9094
+docker compose exec kafka kafka-topics --list --bootstrap-server localhost:9094
 ```
 
 ### Performance Monitoring
@@ -334,7 +334,7 @@ FROM weather_data;
 **Kafka Connection Problems:**
 ```bash
 # Check Kafka is running
-docker-compose ps kafka
+docker compose ps kafka
 
 # Test Kafka connection
 python -c "from kafka import KafkaProducer; producer = KafkaProducer(bootstrap_servers='localhost:9094')"
@@ -357,7 +357,7 @@ python -c "from kafka import KafkaProducer; producer = KafkaProducer(bootstrap_s
 python consumer.py --mode current --batch-size 10
 
 # Check Kafka topic messages
-docker-compose exec kafka kafka-console-consumer \
+docker compose exec kafka kafka-console-consumer \
     --bootstrap-server localhost:9094 \
     --topic nairobi \
     --from-beginning
@@ -382,10 +382,10 @@ print('Connection successful')
 
 ```bash
 # Stop and clean
-docker-compose down -v
+docker compose down -v
 
 # Restart fresh
-docker-compose up -d
+docker compose up -d
 ```
 
 ## 🔄 Data Pipeline Flow
